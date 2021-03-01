@@ -1,0 +1,47 @@
+.int-card {
+    margin-left: 10%;
+}
+
+.interest-card { 
+    height: 125px;
+    width: 250px;
+    background-color:khaki;
+    /* margin-left: 35%; */
+}
+
+.so-card {
+    margin-left: 15%;
+}
+
+.social-card {
+    height: 50px;
+    width: 80px;
+    border-radius: 50%;
+    background-color:lemonchiffon;
+}
+
+.youtube, a:hover { 
+    color: red;
+}
+
+.github, a:hover { 
+    color: black;
+}
+
+.stack, a:hover { 
+    color: orange;
+}
+
+.insta,  a:hover { 
+    color: orangered;
+}
+
+@media screen and (max-width: 575px) {
+    .int-card {
+        margin-left: 20%;
+    }
+   
+    .so-card {
+        margin-left: 35%;
+    }
+}

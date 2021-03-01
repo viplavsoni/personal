@@ -1,0 +1,11 @@
+.navigation-btn {
+    width: 200px;
+    height: 50px;
+    background-color: #f0ffff;
+    color: black;
+    text-align: left;
+}
+
+::ng-deep .mat-drawer-inner-container { 
+    background-color: azure;
+}

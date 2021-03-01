@@ -1,0 +1,44 @@
+<mat-drawer-container class="example-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="side">
+    <nav class="sidebar">
+      <ul class="list-unstyled component mat-typography">
+        <li>
+          <mat-icon style="color: green; margin-left: 5px;">
+            home
+          </mat-icon>
+          <span type="button" class="navigation-btn btn" routerLink="">
+            Home
+          </span>
+        </li>
+        <li>
+          <mat-icon style="color: blue; margin-left: 5px;">
+            work
+          </mat-icon>
+          <span type="button" class="navigation-btn btn" routerLink="/professional" >
+            Professional
+          </span>
+        </li>
+        <li>
+          <mat-icon style="color: palevioletred; margin-left: 5px;">
+            verified_user
+          </mat-icon>
+          <span type="button" class="navigation-btn btn" routerLink="/about">
+            About
+          </span>
+        </li>
+        <li>
+          <mat-icon style="color: lightcoral; margin-left: 5px;">
+            contacts
+          </mat-icon>
+          <span type="button" class="navigation-btn  btn" routerLink="/contact">
+            Contact
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

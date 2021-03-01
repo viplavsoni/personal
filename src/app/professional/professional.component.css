@@ -1,0 +1,4 @@
+::ng-deep .mat-stepper-vertical {
+    width: 100%;
+    background-color: beige;
+}
