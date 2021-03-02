@@ -6,6 +6,10 @@
     text-align: left;
 }
 
+.menu-icon {
+    cursor: default;
+}
+
 ::ng-deep .mat-drawer-inner-container { 
     background-color: azure;
 }
