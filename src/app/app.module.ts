@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'
 import { ProfessionalComponent } from './professional/professional.component';
 import { PersonalComponent } from './personal/personal.component';
 import { AboutComponent } from './about/about.component';
@@ -17,6 +19,9 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
 import { faSquare, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import { faSquare as farSquare, faCheckSquare as farCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { faStackOverflow, faGithub, faMedium, faTwitter, faYoutube, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
+import { EditorModule } from '@progress/kendo-angular-editor';
+import { TreeViewModule } from '@progress/kendo-angular-treeview';
+import { PortfolioFormComponent } from './portfolio-form/portfolio-form.component';
 
 
 @NgModule({
@@ -26,6 +31,7 @@ import { faStackOverflow, faGithub, faMedium, faTwitter, faYoutube, faInstagramS
     PersonalComponent,
     AboutComponent,
     ContactComponent,
+    PortfolioFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,11 @@ import { faStackOverflow, faGithub, faMedium, faTwitter, faYoutube, faInstagramS
     MatIconModule,
     MatDividerModule,
     MatStepperModule,
-    FontAwesomeModule
+    MatFormFieldModule,
+    MatInputModule,
+    FontAwesomeModule,
+    EditorModule,
+    TreeViewModule
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -45,7 +55,9 @@ import { faStackOverflow, faGithub, faMedium, faTwitter, faYoutube, faInstagramS
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class AppModule {

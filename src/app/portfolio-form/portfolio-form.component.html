@@ -1,0 +1,54 @@
+<div>
+  <mat-vertical-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Your's name</ng-template>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="titleCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- #docregion label -->
+    <mat-step [stepControl]="secondFormGroup" label="Your's Interset">
+    <!-- #enddocregion label -->
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Interest</mat-label>
+          <input matInput formControlName="interest1" placeholder="Painting" required [maxLength]=30>    
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Test</mat-label>
+            <input matInput formControlName="interest2" placeholder="Vlogging" required [maxLength]=30>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Test</mat-label>
+            <input matInput formControlName="interest3" placeholder="Vlogging" required [maxLength]=30>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Test</mat-label>
+            <input matInput formControlName="interest4" placeholder="Vlogging" required [maxLength]=30>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="save()">Submit</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>
