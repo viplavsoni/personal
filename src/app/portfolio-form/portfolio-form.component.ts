@@ -18,11 +18,15 @@ export class PortfolioFormComponent implements OnInit {
   contactFormGroup: FormGroup;
   showFrom: boolean = false;
   objectKeys = Object.keys;
+  professionalFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.createFormGroup();
+    if(!localStorage.title){
+      this.showFrom = true;
+    }
   }
 
   cleanForm() {
@@ -149,6 +153,18 @@ export class PortfolioFormComponent implements OnInit {
       twitter:  [''],
       youtube: ['']
     });
+
+    this.professionalFormGroup = this._formBuilder.group({
+      companyCtrl1: ['', Validators.required],
+      durationCtrl1: ['', Validators.required],
+      workedCtrl1: ['', Validators.required],
+      companyCtrl2: ['', Validators.required],
+      durationCtrl2: ['', Validators.required],
+      workedCtrl2: ['', Validators.required],
+      companyCtrl3: ['', Validators.required],
+      durationCtrl3: ['', Validators.required],
+      workedCtrl3: ['', Validators.required]
+    });
   }
 
 
@@ -197,5 +213,22 @@ export class PortfolioFormComponent implements OnInit {
     let intro = this.aboutFormGroup.get('aboutCtrl').value;
     localStorage.intro = intro; 
     console.log(localStorage);
+
+    let professionalData = [
+      { companyName: this.professionalFormGroup.get('companyCtrl1').value,
+        duration: this.professionalFormGroup.get('durationCtrl1').value,
+        story: this.professionalFormGroup.get('workedCtrl1').value,
+      },
+      { companyName: this.professionalFormGroup.get('companyCtrl2').value,
+        duration: this.professionalFormGroup.get('durationCtrl2').value,
+        story: this.professionalFormGroup.get('workedCtrl2').value,
+      },
+      { companyName: this.professionalFormGroup.get('companyCtrl3').value,
+        duration: this.professionalFormGroup.get('durationCtrl3').value,
+        story: this.professionalFormGroup.get('workedCtrl3').value,
+      } 
+    ];
+  
+    localStorage.professionalData = JSON.stringify(professionalData);
   }
 }

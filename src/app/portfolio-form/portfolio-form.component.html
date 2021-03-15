@@ -1,7 +1,10 @@
 <div *ngIf="!showFrom">
-    Existing Record Found
-    <button mat-button color="primary" (click)="cleanForm()">Create New</button>
-    <button mat-button color="primary" (click)="editRecords()">Edit Existing Record</button>
+    <button mat-button color="primary" (click)="cleanForm()">Create New Record</button>
+    <br>
+    <ng-container>
+        Existing Record Found
+        <button mat-button color="primary" (click)="editRecords()">Edit Existing Record</button>
+    </ng-container>
 </div>
 
 <ng-container *ngIf="showFrom">
@@ -121,6 +124,27 @@
             </form>
         </mat-step>
         
+        <mat-step [stepControl]="professionalFormGroup" label="Professional Carrier">
+            <form [formGroup]="professionalFormGroup">
+            <ng-container *ngFor="let index of [1, 2, 3]">
+                <mat-form-field>
+                    <mat-label>Company Name</mat-label>
+                    <input matInput formControlName='companyCtrl{{index}}' placeholder="Company Name" required>
+                    &nbsp;
+                    <input matInput formControlName='durationCtrl{{index}}' placeholder="Work Duration" required>
+                    &nbsp;
+                    <kendo-editor matInput placeholder="Your's work experience" 
+                        formControlName='workedCtrl{{index}}' required style="height: 200px; width: 600px;"></kendo-editor>   
+                </mat-form-field>
+                <br>
+            </ng-container>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+            </form>
+        </mat-step>
+
         <!-- Interest Section for About Page -->
         <mat-step [stepControl]="aboutPageInterestFormGroup" label="Your's Interest With Icon">
             <a href="https://material.io/resources/icons/?style=baseline">Mat Icons list ( Choose Your Favourite Icons)</a>

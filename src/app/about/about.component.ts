@@ -61,27 +61,28 @@ export class AboutComponent implements OnInit {
   }
 
   loadExistingData() {
-    let intro = localStorage.intro
-    this.intro = intro? intro: this.intro;
-    let skills = localStorage.skills;
-    this.skills = skills? JSON.parse(skills): this.skills;
-    let achievement = localStorage.achievementArray;
-    this.achievements = achievement? achievement.split(','): this.achievements;
-    let interestWithIcons = localStorage.interestWithIcons;
-    this.interestWithIcons = interestWithIcons? JSON.parse(interestWithIcons): this.interestWithIcons;
-    let contact = JSON.parse(localStorage.contactInfo);
-    let website = contact.filter(data => Object.keys(data)[0] === 'youtube')[0].youtube;
-    let number = contact.filter(data => Object.keys(data)[0] === 'contactNumber')[0].contactNumber;
-    let email = contact.filter(data => Object.keys(data)[0] === 'email')[0].email;
-    let address = contact.filter(data => Object.keys(data)[0] === 'address')[0].address;
-    
-    console.log(website); 
-    this.details = contact? [
-      `Website: ${website}`,
-      `Phone: +91-${number}`,
-      `Email: ${email}`,
-      `Location: ${address}`
-    ] : this.details;
+    if(localStorage.intro){
+      let intro = localStorage.intro
+      this.intro = intro? intro: this.intro;
+      let skills = localStorage.skills;
+      this.skills = skills? JSON.parse(skills): this.skills;
+      let achievement = localStorage.achievementArray;
+      this.achievements = achievement? achievement.split(','): this.achievements;
+      let interestWithIcons = localStorage.interestWithIcons;
+      this.interestWithIcons = interestWithIcons? JSON.parse(interestWithIcons): this.interestWithIcons;
+      let contact = JSON.parse(localStorage.contactInfo);
+      let website = contact.filter(data => Object.keys(data)[0] === 'youtube')[0].youtube;
+      let number = contact.filter(data => Object.keys(data)[0] === 'contactNumber')[0].contactNumber;
+      let email = contact.filter(data => Object.keys(data)[0] === 'email')[0].email;
+      let address = contact.filter(data => Object.keys(data)[0] === 'address')[0].address;
+       
+      this.details = contact? [
+        `Website: ${website}`,
+        `Phone: +91-${number}`,
+        `Email: ${email}`,
+        `Location: ${address}`
+      ] : this.details;
+    }
   }
 
 }

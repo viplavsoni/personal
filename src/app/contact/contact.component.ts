@@ -24,8 +24,8 @@ export class ContactComponent implements OnInit {
   }
 
   loadIntialData() {
-    let contactInfo = JSON.parse(localStorage.contactInfo);
-    this.contactInfo = contactInfo? contactInfo: this.contactInfo; 
+    let contactInfo = localStorage.contactInfo;
+    this.contactInfo = contactInfo? JSON.parse(contactInfo): this.contactInfo; 
   }
 
 }
