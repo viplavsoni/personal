@@ -1,19 +1,10 @@
 <div class="content">
-    <h4>Software Developer - Spade Infotech Pvt ltd</h4>
+    <h4>Software Developer</h4>
     <div class="about-content">
-        <img class="image-viplav" src="/assets/viplav.jpg" alt="Viplav's Picture">
+        <!-- <img class="image-viplav" src="/assets/viplav.jpg" alt="Viplav's Picture"> -->
+        <div class="about-card" style="margin-left: 20px;">
         
-        <p class="about-card" style="margin-left: 20px; text-align: justify;">
-            Hey ! This is Viplav Soni, a 24 years old young full stack developer and a passionate Youtube Creator living
-            in Raipur, India. I am a Computer Science Engineer, currently working with an amazing team at Spade
-            Infotech.
-            I have around 2.8 years of hands-on experience in websites, and mobile application development using Angular
-            and Ionic Framework. <br>
-
-            Can write short Poems I mean "Haiku", Stories, Poems. <br>
-
-            Started my YouTube journey to learn video editing but that increases my hungry to become an tech influencer. 
-            Now Having 3K Subscriber and 3.13 lac views and having community tab on channel. <br>
+            <div [innerHTML]="intro"></div>
             <span *ngFor="let detail of details">
                 <mat-icon>keyboard_arrow_right</mat-icon>
                 <span>
@@ -21,7 +12,7 @@
                 </span>
                 <br>
             </span>
-        </p>
+        </div>
     </div>
 </div>
 

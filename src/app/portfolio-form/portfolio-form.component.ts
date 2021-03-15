@@ -193,6 +193,9 @@ export class PortfolioFormComponent implements OnInit {
     ] 
 
     localStorage.contactInfo = JSON.stringify(contactInfo);
+
+    let intro = this.aboutFormGroup.get('aboutCtrl').value;
+    localStorage.intro = intro; 
     console.log(localStorage);
   }
 }

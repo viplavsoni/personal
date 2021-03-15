@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  public intro = `<p style="text-align: center;">
+  <img src="https://pbs.twimg.com/profile_images/1277879631995998208/TvhPlirQ_400x400.jpg" alt="viplav" width="50" height="50">
+  
+  Hey ! This is Viplav Soni, a 24 years old young full stack developer and a passionate Youtube Creator living
+  in Raipur, India. I am a Computer Science Engineer, currently working with an amazing team at Spade
+  Infotech.
+  I have around 2.8 years of hands-on experience in websites, and mobile application development using Angular
+  and Ionic Framework. <br>
+
+  Can write short Poems I mean "Haiku", Stories, Poems. <br>
+
+  Started my YouTube journey to learn video editing but that increases my hungry to become an tech influencer. 
+  Now Having 3K Subscriber and 3.13 lac views and having community tab on channel. <br></p>`;
+
   public details = [
     "Website: www.youtube.com/technicalviplav",
     "Phone: +91-7869600848",
@@ -47,12 +61,27 @@ export class AboutComponent implements OnInit {
   }
 
   loadExistingData() {
+    let intro = localStorage.intro
+    this.intro = intro? intro: this.intro;
     let skills = localStorage.skills;
     this.skills = skills? JSON.parse(skills): this.skills;
     let achievement = localStorage.achievementArray;
     this.achievements = achievement? achievement.split(','): this.achievements;
     let interestWithIcons = localStorage.interestWithIcons;
     this.interestWithIcons = interestWithIcons? JSON.parse(interestWithIcons): this.interestWithIcons;
+    let contact = JSON.parse(localStorage.contactInfo);
+    let website = contact.filter(data => Object.keys(data)[0] === 'youtube')[0].youtube;
+    let number = contact.filter(data => Object.keys(data)[0] === 'contactNumber')[0].contactNumber;
+    let email = contact.filter(data => Object.keys(data)[0] === 'email')[0].email;
+    let address = contact.filter(data => Object.keys(data)[0] === 'address')[0].address;
+    
+    console.log(website); 
+    this.details = contact? [
+      `Website: ${website}`,
+      `Phone: +91-${number}`,
+      `Email: ${email}`,
+      `Location: ${address}`
+    ] : this.details;
   }
 
 }
