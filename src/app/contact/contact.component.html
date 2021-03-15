@@ -3,34 +3,36 @@
 </div>
 
 <div class="row">
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: green;">
-                call
-            </mat-icon>
-            <a href="tel:+917869600848" type="tel">+917869600848</a>
+    <ng-container *ngFor="let contact of contactInfo">
+        <div class="card-container int-card" *ngIf="contact['contactNumber']">
+            <div class="card interest-card">
+                <mat-icon style="color: green;">
+                    call
+                </mat-icon>
+                <a href="tel:+91{{contact.contactNumber}}" type="tel">+91{{contact.contactNumber}}</a>
+            </div>
         </div>
-    </div>
 
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: orchid;">
-                mail
-            </mat-icon>
-            <a href="mailto:viplavsoni3333@gmail.com">
-                viplavsoni3333@gmail.com
-            </a>
+        <div class="card-container int-card" *ngIf="contact['email']">
+            <div class="card interest-card">
+                <mat-icon style="color: orchid;">
+                    mail
+                </mat-icon>
+                <a href="mailto:{{contact.email}}">
+                    {{contact.email}}
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color:blue;">
-                home
-            </mat-icon>
-            <p>Raipur C.G.</p>
+        <div class="card-container int-card" *ngIf="contact['address']">
+            <div class="card interest-card">
+                <mat-icon style="color:blue;">
+                    home
+                </mat-icon>
+                <p>{{contact.address}}</p>
+            </div>
         </div>
-    </div>
+    </ng-container>
 </div>
 
 <div class="content">
@@ -38,35 +40,37 @@
 </div>
 
 <div class="row">
-    <div class="card-container so-card">
-        <div class="card social-card">
-            <a class="stack" href="https://stackoverflow.com/users/11727315/viplav-soni">
-                <fa-icon [icon]="['fab', 'stack-overflow']"></fa-icon>
-            </a>
+    <ng-container *ngFor="let social of contactInfo">
+        <div class="card-container so-card" *ngIf="social['stackOverflow']">
+            <div class="card social-card">
+                <a class="stack" href="{{social.stackOverflow}}">
+                    <fa-icon [icon]="['fab', 'stack-overflow']"></fa-icon>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="card-container so-card">
-        <div class="card social-card">
-            <a class="github" href="https://github.com/viplavsoni">
-                <fa-icon [icon]="['fab', 'github']"></fa-icon>
-            </a>
+        <div class="card-container so-card" *ngIf="social['githubLink']">
+            <div class="card social-card">
+                <a class="github" href="{{social.githubLink}}">
+                    <fa-icon [icon]="['fab', 'github']"></fa-icon>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="card-container so-card">
-        <div class="card social-card">
-            <a href="https://twitter.com/viplav_soni">
-                <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
-            </a>
+        <div class="card-container so-card" *ngIf="social['twitter']">
+            <div class="card social-card">
+                <a href="{{social.twitter}}">
+                    <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="card-container so-card">
-        <div class="card social-card">
-            <a class="youtube" href="https://youtube.com/technicalviplav">
-                <fa-icon [icon]="['fab', 'youtube']"></fa-icon>
-            </a>
+        <div class="card-container so-card" *ngIf="social['youtube']">
+            <div class="card social-card">
+                <a class="youtube" href="{{social.youtube}}">
+                    <fa-icon [icon]="['fab', 'youtube']"></fa-icon>
+                </a>
+            </div>
         </div>
-    </div>
+    </ng-container>
 </div>
