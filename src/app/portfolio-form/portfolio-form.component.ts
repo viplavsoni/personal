@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PortfolioFormComponent implements OnInit {
 
-  isLinear = false;
+  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   aboutFormGroup: FormGroup;
@@ -16,12 +16,85 @@ export class PortfolioFormComponent implements OnInit {
   achievementsFormGroup: FormGroup;
   aboutPageInterestFormGroup: FormGroup;
   contactFormGroup: FormGroup;
+  showFrom: boolean = false;
+  objectKeys = Object.keys;
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.createFormGroup();
   }
+
+  cleanForm() {
+    this.showFrom = true;
+  }
+
+  editRecords() {
+    this.firstFormGroup.setValue({titleCtrl: localStorage.title});
+    this.setSecondFormGroupValues();
+    this.aboutFormGroup.setValue({aboutCtrl: 'viplav'});
+    this.setSkillFormGroupValues();
+    this.setAchievementsFormGroup();
+    this.setAboutPageInterestFormGroup();
+    this.setContactFormGroup();
+    this.showFrom = true;
+  }
+
+  setContactFormGroup() {
+    let contactInfo = JSON.parse(localStorage.contactInfo);
+    let contactInfoData = {}
+    contactInfo.forEach(data => {
+      let propertyName:string = this.objectKeys(data)[0];
+      contactInfoData[propertyName] = data[propertyName];
+      console.log(this.objectKeys(data)); 
+    });
+    this.contactFormGroup.patchValue(contactInfoData);
+  }
+
+  setAboutPageInterestFormGroup() {
+    let interestWithIcons = JSON.parse(localStorage.interestWithIcons);
+    let interestWithIconsData = {};
+    interestWithIcons.forEach((data, index) => {
+      let propertyName =  'aboutInterest'+(index+1)+'Ctrl';
+      let iconName = 'aboutInterestIcon'+(index+1)+'Ctrl';
+      interestWithIconsData[propertyName] = data['interest'];
+      interestWithIconsData[iconName] = data['icon'];
+    });
+    this.aboutPageInterestFormGroup.patchValue(interestWithIconsData);
+  }
+
+  setAchievementsFormGroup() {
+    let achievementArray = localStorage.achievementArray.split(',');
+    let achievementArrayData = {};
+    achievementArray.forEach((data, index) => {
+      let propertyName =  'achievement'+(index+1);
+      achievementArrayData[propertyName] = data;
+    });
+    this.achievementsFormGroup.patchValue(achievementArrayData);
+  }
+
+  setSkillFormGroupValues() {
+    let skills = JSON.parse(localStorage.skills);
+    let skillsData = {};
+    skills.forEach((data, index) => {
+      let propertyName =  'skill'+(index+1)+'Ctrl';
+      let percentageName = 'skill'+(index+1)+'PercentageCtrl';
+      skillsData[propertyName] = data['skill'];
+      skillsData[percentageName] = data['percentage'];
+    });
+    this.skillFormGroup.patchValue(skillsData);
+  }
+
+  setSecondFormGroupValues() {
+    let interestArray = localStorage.interestArray.split(',');
+    let interestArrayData = {};
+    interestArray.forEach((data, index) => {
+      let propertyName =  'interest'+(index+1);
+      interestArrayData[propertyName] = data;
+    });
+    this.secondFormGroup.patchValue(interestArrayData);
+  }
+
   createFormGroup() {
     this.firstFormGroup = this._formBuilder.group({
       titleCtrl: ['', Validators.required]

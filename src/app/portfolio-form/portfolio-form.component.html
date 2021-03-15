@@ -1,197 +1,199 @@
-<div>
+<div *ngIf="!showFrom">
     Existing Record Found
-    <button mat-button color="primary">Create New</button>
-    <button mat-button color="primary">Edit Existing Record</button>
+    <button mat-button color="primary" (click)="cleanForm()">Create New</button>
+    <button mat-button color="primary" (click)="editRecords()">Edit Existing Record</button>
 </div>
 
-<div>
-  <mat-vertical-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Your's name</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" formControlName="titleCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <!-- #docregion label -->
-    <mat-step [stepControl]="secondFormGroup" label="Your's Interset">
-    <!-- #enddocregion label -->
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Interest</mat-label>
-          <input matInput formControlName="interest1" placeholder="Painting" required [maxLength]=30>    
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Interest</mat-label>
-            <input matInput formControlName="interest2" placeholder="Vlogging" required [maxLength]=30>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Interest</mat-label>
-            <input matInput formControlName="interest3" placeholder="Vlogging" [maxLength]=30>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Interest</mat-label>
-            <input matInput formControlName="interest4" placeholder="Vlogging" [maxLength]=30>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-
-    <mat-step [stepControl]="aboutFormGroup">
-        <form [formGroup]="aboutFormGroup">
-          <ng-template matStepLabel>Something about yourself</ng-template>
-            <kendo-editor matInput placeholder="your short story" formControlName="aboutCtrl" required style="height: 300px; width: 600px;"></kendo-editor>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-    </mat-step>
-
-    <mat-step [stepControl]="skillFormGroup">
-        <form [formGroup]="skillFormGroup">
-          <ng-template matStepLabel>Your Skills</ng-template>
-          <mat-form-field>
-            <mat-label>Skill 1</mat-label>
-            <input matInput placeholder="1st Skill" formControlName="skill1Ctrl" required>
-            &nbsp;
-            <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill1PercentageCtrl" required>
-          </mat-form-field>
-
-          <mat-form-field class="nested-form">
-            <mat-label>Skill 2</mat-label>
-            <input matInput placeholder="2nd Skill" formControlName="skill2Ctrl" required>
-            &nbsp;
-            <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill2PercentageCtrl">
-          </mat-form-field>
-   
-          <mat-form-field class="nested-form">
-            <mat-label>Skill 3</mat-label>
-            <input matInput placeholder="3rd Skill" formControlName="skill3Ctrl" required>
-            &nbsp;
-            <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill3PercentageCtrl">
-          </mat-form-field>
-
-          <mat-form-field class="nested-form">
-            <mat-label>Skill 4</mat-label>
-            <input matInput placeholder="4th Skill" formControlName="skill4Ctrl" required>
-            &nbsp;
-            <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill4PercentageCtrl">
-          </mat-form-field>
-
-          <mat-form-field class="nested-form">
-            <mat-label>Skill 5</mat-label>
-            <input matInput placeholder="5th Skill" formControlName="skill5Ctrl" required>
-            &nbsp;
-            <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill5PercentageCtrl">
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-    </mat-step>
-
-    <!-- Acievements Section -->
-    <mat-step [stepControl]="achievementsFormGroup" label="Your's Achievements">
-        <form [formGroup]="achievementsFormGroup">
-        <ng-container *ngFor="let index of [1, 2, 3, 4]">
+<ng-container *ngIf="showFrom">
+    <div>
+    <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Your's name</ng-template>
             <mat-form-field>
-                <mat-label>Achievement {{index}}</mat-label>
-                <input matInput formControlName='achievement{{index}}' placeholder="achievement" required [maxLength]=30>    
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="titleCtrl" required>
+            </mat-form-field>
+            <div>
+            <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+        </mat-step>
+        <!-- #docregion label -->
+        <mat-step [stepControl]="secondFormGroup" label="Your's Interset">
+        <!-- #enddocregion label -->
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+            <mat-label>Interest</mat-label>
+            <input matInput formControlName="interest1" placeholder="Painting" required [maxLength]=30>    
             </mat-form-field>
             <br>
-        </ng-container>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-        </div>
-        </form>
-    </mat-step>
-    
-    <!-- Interest Section for About Page -->
-    <mat-step [stepControl]="aboutPageInterestFormGroup" label="Your's Interest With Icon">
-        <a href="https://material.io/resources/icons/?style=baseline">Mat Icons list ( Choose Your Favourite Icons)</a>
-        <form [formGroup]="aboutPageInterestFormGroup">
-        <ng-container *ngFor="let index of [1, 2, 3, 4, 5, 6]">
-            <mat-form-field class="nested-form">
+            <mat-form-field>
                 <mat-label>Interest</mat-label>
-                <input matInput formControlName='aboutInterest{{index}}Ctrl' placeholder="Interest" [maxLength]=20>    
+                <input matInput formControlName="interest2" placeholder="Vlogging" required [maxLength]=30>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Interest</mat-label>
+                <input matInput formControlName="interest3" placeholder="Vlogging" [maxLength]=30>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Interest</mat-label>
+                <input matInput formControlName="interest4" placeholder="Vlogging" [maxLength]=30>
+            </mat-form-field>
+            <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+        </mat-step>
+
+        <mat-step [stepControl]="aboutFormGroup">
+            <form [formGroup]="aboutFormGroup">
+            <ng-template matStepLabel>Something about yourself</ng-template>
+                <kendo-editor matInput placeholder="your short story" formControlName="aboutCtrl" required style="height: 300px; width: 600px;"></kendo-editor>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="skillFormGroup">
+            <form [formGroup]="skillFormGroup">
+            <ng-template matStepLabel>Your Skills</ng-template>
+            <mat-form-field>
+                <mat-label>Skill 1</mat-label>
+                <input matInput placeholder="1st Skill" formControlName="skill1Ctrl" required>
                 &nbsp;
-                <input matInput formControlName='aboutInterestIcon{{index}}Ctrl' placeholder="dvr (Icon Name)" [maxLength]=30>                
-            </mat-form-field>
-        </ng-container>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-        </div>
-        </form>
-    </mat-step>
-
-    <!-- Contact Form -->
-    <mat-step [stepControl]="contactFormGroup" label="Contact Info and Social Profiles">
-        <form [formGroup]="contactFormGroup">
-            <mat-form-field>
-                <mat-label>Contact Number</mat-label>
-                <input matInput formControlName='contactNumber' placeholder="Your 10 digit mobile number"
-                 [maxLength]="10" required>                
+                <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill1PercentageCtrl" required>
             </mat-form-field>
 
             <mat-form-field class="nested-form">
-                <mat-label>Email</mat-label>    
-                <input matInput formControlName='email' placeholder="email@domain.com" [maxLength]=50 required>                
+                <mat-label>Skill 2</mat-label>
+                <input matInput placeholder="2nd Skill" formControlName="skill2Ctrl" required>
+                &nbsp;
+                <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill2PercentageCtrl">
+            </mat-form-field>
+    
+            <mat-form-field class="nested-form">
+                <mat-label>Skill 3</mat-label>
+                <input matInput placeholder="3rd Skill" formControlName="skill3Ctrl" required>
+                &nbsp;
+                <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill3PercentageCtrl">
             </mat-form-field>
 
             <mat-form-field class="nested-form">
-                <mat-label>Address</mat-label>    
-                <input matInput formControlName='address' placeholder="City" [maxLength]=20>                
+                <mat-label>Skill 4</mat-label>
+                <input matInput placeholder="4th Skill" formControlName="skill4Ctrl" required>
+                &nbsp;
+                <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill4PercentageCtrl">
             </mat-form-field>
 
             <mat-form-field class="nested-form">
-                <mat-label>Github Profile</mat-label>    
-                <input matInput formControlName='githubLink' placeholder="www.github.com/viplavsoni">                
+                <mat-label>Skill 5</mat-label>
+                <input matInput placeholder="5th Skill" formControlName="skill5Ctrl" required>
+                &nbsp;
+                <input type="number" [max]=100 matInput placeholder="Skill Percentage" formControlName="skill5PercentageCtrl">
             </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+            </form>
+        </mat-step>
 
-            <mat-form-field class="nested-form">
-                <mat-label>Stack Overflow Profile</mat-label>    
-                <input matInput formControlName='stackOverflow' placeholder="www.stackoverflow.com/users/11727315/viplav-soni">                
-            </mat-form-field>
+        <!-- Acievements Section -->
+        <mat-step [stepControl]="achievementsFormGroup" label="Your's Achievements">
+            <form [formGroup]="achievementsFormGroup">
+            <ng-container *ngFor="let index of [1, 2, 3, 4]">
+                <mat-form-field>
+                    <mat-label>Achievement {{index}}</mat-label>
+                    <input matInput formControlName='achievement{{index}}' placeholder="achievement" required [maxLength]=30>    
+                </mat-form-field>
+                <br>
+            </ng-container>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+            </form>
+        </mat-step>
+        
+        <!-- Interest Section for About Page -->
+        <mat-step [stepControl]="aboutPageInterestFormGroup" label="Your's Interest With Icon">
+            <a href="https://material.io/resources/icons/?style=baseline">Mat Icons list ( Choose Your Favourite Icons)</a>
+            <form [formGroup]="aboutPageInterestFormGroup">
+            <ng-container *ngFor="let index of [1, 2, 3, 4, 5, 6]">
+                <mat-form-field class="nested-form">
+                    <mat-label>Interest</mat-label>
+                    <input matInput formControlName='aboutInterest{{index}}Ctrl' placeholder="Interest" [maxLength]=20>    
+                    &nbsp;
+                    <input matInput formControlName='aboutInterestIcon{{index}}Ctrl' placeholder="dvr (Icon Name)" [maxLength]=30>                
+                </mat-form-field>
+            </ng-container>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+            </form>
+        </mat-step>
 
-            <mat-form-field class="nested-form">
-                <mat-label>Twitter Profile</mat-label>    
-                <input matInput formControlName='twitter' placeholder="www.twitter.com/viplav_soni">                
-            </mat-form-field>
+        <!-- Contact Form -->
+        <mat-step [stepControl]="contactFormGroup" label="Contact Info and Social Profiles">
+            <form [formGroup]="contactFormGroup">
+                <mat-form-field>
+                    <mat-label>Contact Number</mat-label>
+                    <input matInput formControlName='contactNumber' placeholder="Your 10 digit mobile number"
+                    [maxLength]="10" required>                
+                </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>YouTube Channel</mat-label>    
-                <input matInput formControlName='youtube' placeholder="www.youtube.com/technicalviplav">                
-            </mat-form-field>        
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-        </div>
-        </form>
-    </mat-step>
+                <mat-form-field class="nested-form">
+                    <mat-label>Email</mat-label>    
+                    <input matInput formControlName='email' placeholder="email@domain.com" [maxLength]=50 required>                
+                </mat-form-field>
 
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-        <button mat-button (click)="save()">Submit</button>
-      </div>
-    </mat-step>
-  </mat-vertical-stepper>
-</div> 
+                <mat-form-field class="nested-form">
+                    <mat-label>Address</mat-label>    
+                    <input matInput formControlName='address' placeholder="City" [maxLength]=20>                
+                </mat-form-field>
+
+                <mat-form-field class="nested-form">
+                    <mat-label>Github Profile</mat-label>    
+                    <input matInput formControlName='githubLink' placeholder="www.github.com/viplavsoni">                
+                </mat-form-field>
+
+                <mat-form-field class="nested-form">
+                    <mat-label>Stack Overflow Profile</mat-label>    
+                    <input matInput formControlName='stackOverflow' placeholder="www.stackoverflow.com/users/11727315/viplav-soni">                
+                </mat-form-field>
+
+                <mat-form-field class="nested-form">
+                    <mat-label>Twitter Profile</mat-label>    
+                    <input matInput formControlName='twitter' placeholder="www.twitter.com/viplav_soni">                
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>YouTube Channel</mat-label>    
+                    <input matInput formControlName='youtube' placeholder="www.youtube.com/technicalviplav">                
+                </mat-form-field>        
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+            </form>
+        </mat-step>
+
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <p>You are now done.</p>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button mat-button (click)="save()">Submit</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+    </div> 
+</ng-container>
