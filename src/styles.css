@@ -116,7 +116,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 
   .card-container .card:not(.highlight-card) {
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 
   .card-container .card:not(.highlight-card):hover {

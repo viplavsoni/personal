@@ -30,102 +30,29 @@
         <h1 style="color:teal">Skills</h1>
     </div>
 
-    <div class="about-content skills-width">
-        <div>
-            <label for="html">HTML</label>
-            <label for="html" class="float-right">80%</label>
-            <br>
-            <progress class="skills-width" id="html" value="80" max="100"> 80% </progress>
+    <ng-container *ngFor="let skill of skills">
+        <div class="about-content skills-width">
+            <div>
+                <label for={{skill.skill}}>{{skill.skill}}</label>
+                <label for={{skill.skill}} class="float-right">{{skill.percentage}}%</label>
+                <br>
+                <progress class="skills-width" id="html" value={{skill.percentage}} max="100"> {{skill.percentage}}% </progress>
+            </div>
         </div>
-    </div>
-
-    <div class="about-content skills-width">
-        <div>
-            <label for="css">CSS</label>
-            <label for="css" class="float-right">70%</label>
-            <br>
-            <progress class="skills-width" id="css" value="70" max="100"> 70% </progress>
-        </div>
-    </div>
-
-    <div class="about-content skills-width">
-        <div>
-            <label for="angular">Angular</label>
-            <label for="angular" class="float-right">95%</label>
-            <br>
-            <progress class="skills-width" id="angular" value="95" max="100"> 95% </progress>
-        </div>
-    </div>
-
-    <div class="about-content skills-width">
-        <div>
-            <label for="ionic">Ionic</label>
-            <label for="ionic" class="float-right">95%</label>
-            <br>
-            <progress class="skills-width" id="html" value="95" max="100"> 95% </progress>
-        </div>
-    </div>
-    
-    <div class="about-content skills-width">
-        <div>
-            <label for="pwa">PWA</label>
-            <label for="pwa" class="float-right">65%</label>
-            <br>
-            <progress class="skills-width" id="pwa" value="65" max="100"> 65% </progress>
-        </div>
-    </div>
-
-    <div class="about-content skills-width">
-        <div>
-            <label for="groovy">Groovy on Grails</label>
-            <label for="groovy" class="float-right">75%</label>
-            <br>
-            <progress class="skills-width" id="groovy" value="75" max="100"> 75% </progress>
-        </div>
-    </div>
-
-    <div class="about-content skills-width">
-        <div>
-            <label for="php">PHP</label>
-            <label for="php" class="float-right">30%</label>
-            <br>
-            <progress class="skills-width" id="php" value="30" max="100"> 30% </progress>
-        </div>
-    </div>
-
-    
-    <div class="about-content skills-width">
-        <div>
-            <label for="git">Version Control ( Git )</label>
-            <label for="git" class="float-right">89%</label>
-            <br>
-            <progress class="skills-width" id="git" value="89" max="100"> 89% </progress>
-        </div>
-    </div>
+    </ng-container>
 </div>
 
 <div class="content">
     <div class="about-content">
         <h1 style="color:seagreen">Achievements</h1>
     </div>
-
-    <div class="card-container">
-        <div class="card achievements-card">
-            <span>4th Position on IoT live Project competition held at IIT B.H.U.</span>
+    <ng-container *ngFor="let achievement of achievements">
+        <div class="card-container">
+            <div class="card achievements-card">
+                <span>{{achievement}}</span>
+            </div>
         </div>
-    </div>
-
-    <div class="card-container">
-        <div class="card achievements-card">
-            <span>Best Team Leader ( NSS SSEC Unit Camp )</span>
-        </div>
-    </div>
-    
-    <div class="card-container">
-        <div class="card achievements-card">
-            <span>Bagged first Prize on Slogan competition ( Govt of C.G. )</span>
-        </div>
-    </div>
+    </ng-container>
 </div>
 
 <div class="content">
@@ -134,46 +61,13 @@
     </div>
 </div>
 
-<div class="row">    
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: yellow;">dvr</mat-icon>
-            <h4>PWA</h4>
-        </div>
-    </div>
-
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: rosybrown;">design_services</mat-icon>
-            <h4>Design</h4>
-        </div>
-    </div>
-
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: red;">music_video</mat-icon>
-            <h4>Music</h4>
-        </div>
-    </div>
-
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: orange;">mobile_friendly</mat-icon>
-            <h4>Mobile App</h4>
-        </div>
-    </div>
-    
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: pink;">travel_explore</mat-icon>
-            <h4>Travelling</h4>
-        </div>
-    </div>
-    
-    <div class="card-container int-card">
-        <div class="card interest-card">
-            <mat-icon style="color: blueviolet;">directions_cars</mat-icon>
-            <h4>Ride</h4>
-        </div>
-    </div>
+<div class="row">
+    <ng-container *ngFor="let interestWithIcon of interestWithIcons; let i = index">
+        <div class="card-container int-card">
+            <div class="card interest-card">
+                <mat-icon style='color: purple'>{{interestWithIcon.icon}}</mat-icon>
+                <h4>{{interestWithIcon.interest}}</h4>
+            </div>
+        </div>    
+    </ng-container>    
 </div>
