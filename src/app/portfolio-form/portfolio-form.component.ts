@@ -169,11 +169,8 @@ export class PortfolioFormComponent implements OnInit {
 
 
   save(){
-    localStorage.title = this.firstFormGroup.get('titleCtrl').value;
     let interestArray = [this.secondFormGroup.get('interest1').value, this.secondFormGroup.get('interest2').value,
                           this.secondFormGroup.get('interest3').value, this.secondFormGroup.get('interest4').value];
-    localStorage.interestArray = interestArray;
-    
     let skills = [
       { skill: this.skillFormGroup.get('skill1Ctrl').value, percentage: this.skillFormGroup.get('skill1PercentageCtrl').value},
       { skill: this.skillFormGroup.get('skill2Ctrl').value, percentage: this.skillFormGroup.get('skill2PercentageCtrl').value},
@@ -182,12 +179,8 @@ export class PortfolioFormComponent implements OnInit {
       { skill: this.skillFormGroup.get('skill5Ctrl').value, percentage: this.skillFormGroup.get('skill5PercentageCtrl').value}
     ]
     
-    localStorage.skills = JSON.stringify(skills);
-    
     let achievementArray = [this.achievementsFormGroup.get('achievement1').value, this.achievementsFormGroup.get('achievement2').value,
                           this.achievementsFormGroup.get('achievement3').value, this.achievementsFormGroup.get('achievement4').value];
-
-    localStorage.achievementArray = achievementArray;
 
     let interestWithIcons = [
       { interest: this.aboutPageInterestFormGroup.get('aboutInterest1Ctrl').value, icon: this.aboutPageInterestFormGroup.get('aboutInterestIcon1Ctrl').value},
@@ -196,8 +189,7 @@ export class PortfolioFormComponent implements OnInit {
       { interest: this.aboutPageInterestFormGroup.get('aboutInterest4Ctrl').value, icon: this.aboutPageInterestFormGroup.get('aboutInterestIcon4Ctrl').value},
       { interest: this.aboutPageInterestFormGroup.get('aboutInterest5Ctrl').value, icon: this.aboutPageInterestFormGroup.get('aboutInterestIcon5Ctrl').value}
     ]
-    localStorage.interestWithIcons = JSON.stringify(interestWithIcons);
-
+    
     let contactInfo = [
       {contactNumber: this.contactFormGroup.get('contactNumber').value},
       {email:  this.contactFormGroup.get('email').value},
@@ -208,11 +200,7 @@ export class PortfolioFormComponent implements OnInit {
       {youtube: this.contactFormGroup.get('youtube').value}
     ] 
 
-    localStorage.contactInfo = JSON.stringify(contactInfo);
-
     let intro = this.aboutFormGroup.get('aboutCtrl').value;
-    localStorage.intro = intro; 
-    console.log(localStorage);
 
     let professionalData = [
       { companyName: this.professionalFormGroup.get('companyCtrl1').value,
@@ -228,7 +216,15 @@ export class PortfolioFormComponent implements OnInit {
         story: this.professionalFormGroup.get('workedCtrl3').value,
       } 
     ];
-  
+
+
+    localStorage.title = this.firstFormGroup.get('titleCtrl').value;
+    localStorage.interestArray = interestArray;
+    localStorage.skills = JSON.stringify(skills);
+    localStorage.achievementArray = achievementArray;
+    localStorage.interestWithIcons = JSON.stringify(interestWithIcons);    
+    localStorage.intro = intro;     
+    localStorage.contactInfo = JSON.stringify(contactInfo);
     localStorage.professionalData = JSON.stringify(professionalData);
   }
 }
